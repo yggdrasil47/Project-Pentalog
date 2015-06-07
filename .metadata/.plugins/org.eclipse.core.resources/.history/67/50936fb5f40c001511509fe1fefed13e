@@ -1,0 +1,8 @@
+package mihai.radu.pantalog;
+
+import java.awt.List;
+
+public interface ProductDao {
+public List<Product> getAllProducts();
+
+}

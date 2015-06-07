@@ -1,0 +1,70 @@
+package mihai.radu.pantalog;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ProductDaoImpl implements ProductDao {
+
+	List<Product> products = null;
+
+	public ProductDaoImpl() {
+		products = new ArrayList<Product>();
+		Product product1 = new Product("1", "Shoes", 219.56, 15);
+		Product product2 = new Product("2", "Longboard", 629.99, 10);
+		Product product3 = new Product("3", "Sunglasses", 15.0, 30);
+		Product product4 = new Product("4", "Headphones ", 149.89, 25);
+		products.add(product1);
+		products.add(product2);
+		products.add(product3);
+		products.add(product4);
+	}
+
+	@Override
+	public List<Product> getAllProducts() {
+		return products;
+	}
+
+	@Override
+	public Product getProduct(String id) {
+		for (Product prod : products) {
+			if (prod.getId().equals(id))
+				return prod;
+		}
+		return null;
+	}
+
+	@Override
+	public void updateProduct(Product product) {
+		for (Product prod : products) {
+			if (prod.getId() == product.getId()) {
+				prod.setName(product.getName());
+				prod.setPrice(product.getPrice());
+				prod.setQuantity(product.getQuantity());
+			}
+		}
+	}
+
+	@Override
+	public void deleteProduct(Product product) {
+		products.remove(product);
+
+	}
+
+	public String toString() {
+		String result = "";
+		result += "We have " + getAllProducts().size() + " products: \n";
+		for(Product products:this.getAllProducts()){
+			result +=products.toString() + "\n";
+		}
+		return result;
+	}
+	
+	public double calculateInventoryTotal(){
+		double total = 0.0;
+		for (Product prod : products){
+			total += prod.getPrice();
+		}
+		return total;
+		
+	}
+}
