@@ -10,21 +10,20 @@ public class MainProductDao {
 		System.out.println("The  inventory value is:"
 				+ productDao.calculateInventoryTotal());
 
+		
 		Product product = productDao.getAllProducts().get(1);
 		product.setName("Bicycle");
 		product.setPrice(899.49);
 		product.setQuantity(5);
 		productDao.updateProduct(product);
 		System.out.println(productDao.toString());
-
+		
 		Product productReturn = productDao.getProduct("2");
-		System.out.println("Lada returnata dupa ID: " + productReturn);
-
+		System.out.println("Lada returnata dupa ID: "+ productReturn);
+		
 		Product productToDelete = productDao.getAllProducts().get(3);
-		productDao.deleteProduct(productToDelete);
+		productDao.deleteProduct(productToDelete));
 		System.out.println(productDao.toString());
-		System.out.println("The  inventory value is:"
-				+ productDao.calculateInventoryTotal());
 	}
 
 }
